@@ -3,7 +3,7 @@
  * and it overwrites better-moment-card's own card_mod.
  */
 (() => {
-  const FLAG = "_frostedGlassGutters";
+  const FLAG = "_fgPad20";
 
   const ROW_CSS = `
     .info {
@@ -16,6 +16,10 @@
   `;
 
   const BATTERY_ENTITY_CSS = `
+    :host {
+      padding-inline-end: 12px !important;
+      box-sizing: border-box;
+    }
     .icon {
       flex: 0 0 36px !important;
       margin-right: 10px !important;
@@ -25,18 +29,40 @@
     .name {
       margin-left: 0 !important;
       margin-inline-start: 0 !important;
+      margin-right: 0 !important;
+      margin-inline-end: 0 !important;
     }
     .state {
-      margin-inline-end: 0 !important;
       padding-inline-end: 0 !important;
+      margin-inline-end: 0 !important;
     }
   `;
 
   const BATTERY_CARD_CSS = `
-    :host .card-content,
     .card-content {
       padding-inline-start: 12px !important;
+      padding-inline-end: 0 !important;
+      padding-left: 12px !important;
+      padding-right: 0 !important;
+    }
+  `;
+
+  const ENTITIES_CARD_CSS = `
+    .card-content,
+    #states {
+      padding-inline-start: 12px !important;
       padding-inline-end: 12px !important;
+      padding-left: 12px !important;
+      padding-right: 12px !important;
+    }
+  `;
+
+  const HA_CARD_SLOT_CSS = `
+    ::slotted(.card-content),
+    ::slotted(#states) {
+      padding-inline-start: 12px !important;
+      padding-inline-end: 12px !important;
+      padding-left: 12px !important;
       padding-right: 12px !important;
     }
   `;
@@ -65,6 +91,7 @@
     "template-entity-row": ROW_CSS,
     "battery-state-entity": BATTERY_ENTITY_CSS,
     "battery-state-card": BATTERY_CARD_CSS,
+    "hui-entities-card": ENTITIES_CARD_CSS,
   };
 
   const sheets = {};
@@ -78,11 +105,8 @@
     /* use <style> tags */
   }
 
-  const applyShadow = (el) => {
-    const css = SHADOW_CSS[el.localName];
-    const root = el?.shadowRoot;
-    if (!css || !root || root[FLAG]) return;
-    const sheet = sheets[el.localName];
+  const adopt = (root, css, sheet) => {
+    if (!root || root[FLAG]) return;
     if (sheet) {
       try {
         root.adoptedStyleSheets = [...(root.adoptedStyleSheets || []), sheet];
@@ -96,6 +120,44 @@
     style.textContent = css;
     root.appendChild(style);
     root[FLAG] = true;
+  };
+
+  const padBox = (node, start, end) => {
+    if (!node || node.nodeType !== 1) return;
+    node.style.setProperty("padding-left", `${start}px`, "important");
+    node.style.setProperty("padding-right", `${end}px`, "important");
+    node.style.setProperty("padding-inline-start", `${start}px`, "important");
+    node.style.setProperty("padding-inline-end", `${end}px`, "important");
+    node.style.setProperty("box-sizing", "border-box");
+  };
+
+  const pierceHaCard = (card) => {
+    const root = card?.shadowRoot;
+    if (!root) return;
+    adopt(root, HA_CARD_SLOT_CSS, null);
+  };
+
+  const applyShadow = (el) => {
+    const css = SHADOW_CSS[el.localName];
+    const root = el?.shadowRoot;
+    if (!css || !root) return;
+    adopt(root, css, sheets[el.localName]);
+
+    if (el.localName === "battery-state-card") {
+      const card = root.querySelector("ha-card");
+      pierceHaCard(card);
+      padBox(root.querySelector(".card-content"), 12, 0);
+      padBox(el, 0, 0);
+    }
+    if (el.localName === "hui-entities-card") {
+      const card = root.querySelector("ha-card");
+      pierceHaCard(card);
+      padBox(root.querySelector("#states"), 12, 12);
+      padBox(root.querySelector(".card-content"), 12, 12);
+    }
+    if (el.localName === "battery-state-entity") {
+      padBox(el, 0, 12);
+    }
   };
 
   const applyClock = (el) => {
