@@ -1,5 +1,5 @@
 # Frosted Glass Dark Lite
-# ver. 1.4.11 - (2026-08-18)
+# ver. 1.4.12 - (2026-08-18)
 
 Frosted Glass Dark Lite:
   card-mod-theme: 'Frosted Glass Dark Lite'
@@ -170,22 +170,56 @@ Frosted Glass Dark Lite:
         margin-inline-start: 0 !important;
         margin-left: 0 !important;
       }
-    "hui-entities-card $ hui-toggle-entity-row,hui-cover-entity-row,hui-group-entity-row $":
-      "hui-generic-entity-row $": |
-        .info {
-          padding-inline-start: 10px !important;
-        }
-        state-badge {
-          flex: 0 0 36px !important;
-        }
-    "hui-toggle-entity-row,hui-cover-entity-row,hui-group-entity-row $":
-      "hui-generic-entity-row $": |
-        .info {
-          padding-inline-start: 10px !important;
-        }
-        state-badge {
-          flex: 0 0 36px !important;
-        }
+    "#states>div>*":
+      "$":
+        "hui-generic-entity-row":
+          "$": |
+            .info {
+              padding-inline-start: 10px !important;
+            }
+            state-badge {
+              flex: 0 0 36px !important;
+            }
+    "#states>*":
+      "$":
+        "hui-generic-entity-row":
+          "$": |
+            .info {
+              padding-inline-start: 10px !important;
+            }
+            state-badge {
+              flex: 0 0 36px !important;
+            }
+    "hui-entities-card $ #states>div>*":
+      "$":
+        "hui-generic-entity-row":
+          "$": |
+            .info {
+              padding-inline-start: 10px !important;
+            }
+            state-badge {
+              flex: 0 0 36px !important;
+            }
+    "hui-toggle-entity-row":
+      "$":
+        "hui-generic-entity-row":
+          "$": |
+            .info {
+              padding-inline-start: 10px !important;
+            }
+            state-badge {
+              flex: 0 0 36px !important;
+            }
+    "hui-cover-entity-row":
+      "$":
+        "hui-generic-entity-row":
+          "$": |
+            .info {
+              padding-inline-start: 10px !important;
+            }
+            state-badge {
+              flex: 0 0 36px !important;
+            }
 
   # =========================
   # CARD-MOD-ROOT GLOBAL CSS
