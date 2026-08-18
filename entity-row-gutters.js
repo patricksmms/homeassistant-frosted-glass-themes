@@ -26,12 +26,18 @@
       margin-left: 0 !important;
       margin-inline-start: 0 !important;
     }
+    .state {
+      margin-inline-end: 0 !important;
+      padding-inline-end: 0 !important;
+    }
   `;
 
   const BATTERY_CARD_CSS = `
+    :host .card-content,
     .card-content {
       padding-inline-start: 12px !important;
       padding-inline-end: 12px !important;
+      padding-right: 12px !important;
     }
   `;
 

@@ -1,5 +1,5 @@
 # Frosted Glass Light Lite
-# ver. 1.4.17 - (2026-08-18)
+# ver. 1.4.18 - (2026-08-18)
 
 Frosted Glass Lite:
   modes:
@@ -175,10 +175,10 @@ Frosted Glass Lite:
             padding-inline-end: 12px !important;
           }
           
-          /* battery-state-card: do not shrink left inset; match that gutter on the right */
+          /* battery-state-card: 12px right of the value column, same as entities cards */
           :host(battery-state-card) .card-content,
           :host(.type-custom-battery-state-card) .card-content {
-            padding-inline-end: 16px !important;
+            padding-inline-end: 12px !important;
           }
         "battery-state-entity $": |
           .icon {
@@ -778,10 +778,10 @@ Frosted Glass Lite:
             padding-inline-end: 12px !important;
           }
           
-          /* battery-state-card: do not shrink left inset; match that gutter on the right */
+          /* battery-state-card: 12px right of the value column, same as entities cards */
           :host(battery-state-card) .card-content,
           :host(.type-custom-battery-state-card) .card-content {
-            padding-inline-end: 16px !important;
+            padding-inline-end: 12px !important;
           }
         "battery-state-entity $": |
           .icon {
