@@ -1,5 +1,5 @@
 # Frosted Glass Light Lite
-# ver. 1.4.3 - (2026-08-18)
+# ver. 1.4.4 - (2026-08-18)
 
 Frosted Glass Light Lite:
   card-mod-theme: "Frosted Glass Light Lite"
@@ -31,12 +31,14 @@ Frosted Glass Light Lite:
   # =========================
   # DIALOGS (HA 2026.8+ native vars — more-info, pickers, bottom sheets)
   # =========================
-  ha-dialog-surface-backdrop-filter: 'blur(20px) saturate(1.2)'
-  ha-dialog-surface-background: 'rgba(234, 235, 238, 0.50)'
+  ha-dialog-surface-backdrop-filter: 'blur(12px) saturate(1.2)'
+  ha-dialog-surface-background: 'rgba(255, 255, 255, 0.08)'
+  ha-bottom-sheet-surface-backdrop-filter: 'blur(12px) saturate(1.2)'
+  ha-bottom-sheet-surface-background: 'rgba(255, 255, 255, 0.08)'
   ha-dialog-border-radius: '18px'
   dialog-box-shadow: '0 12px 20px rgba(0, 0, 0, 0.15), 3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.30) inset, -2px -2px 0.5px -2px rgba(255, 255, 255, 0.30) inset'
-  paper-dialog-background-color: 'rgba(234, 235, 238, 0.50)'
-  mdc-dialog-scrim-color: 'rgba(0, 0, 0, 0.35)'
+  paper-dialog-background-color: 'rgba(255, 255, 255, 0.08)'
+  mdc-dialog-scrim-color: 'rgba(0, 0, 0, 0.20)'
 
   # =========================
   # CARDS / CARD-MOD
