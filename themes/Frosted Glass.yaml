@@ -1,5 +1,5 @@
 # Frosted Glass
-# ver. 1.4.0 - (2026-08-18)
+# ver. 1.4.1 - (2026-08-18)
 
 Frosted Glass:
   modes:
@@ -339,17 +339,29 @@ Frosted Glass:
         }
 
         /* HEADER frosted glass via ::before (avoids containing block issue with dropdowns) */
-        .header::before {
+        .header,
+        .toolbar,
+        ha-top-app-bar-fixed {
+          isolation: isolate;
+          background: transparent !important;
+        }
+        .toolbar {
+          position: relative;
+        }
+        .header::before,
+        .toolbar::before,
+        ha-top-app-bar-fixed::before {
           content: '';
           position: absolute;
           inset: 0;
-          background: rgba(234, 235, 238, 0.15);
+          background: rgba(255, 255, 255, 0.28);
           backdrop-filter: blur(8px) saturate(1.1);
           -webkit-backdrop-filter: blur(8px) saturate(1.1);
           z-index: -1;
           pointer-events: none;
         }
-        .edit-mode .header::before {
+        .edit-mode .header::before,
+        .edit-mode .toolbar::before {
           background: rgba(255, 255, 255, 0.8);
         }
 
