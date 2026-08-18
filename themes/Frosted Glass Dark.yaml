@@ -1,5 +1,5 @@
 # Frosted Glass Dark
-# ver. 1.4.1 - (2026-08-18)
+# ver. 1.4.2 - (2026-08-18)
 
 Frosted Glass Dark:
   card-mod-theme: 'Frosted Glass Dark'
@@ -10,7 +10,8 @@ Frosted Glass Dark:
   # =========================
   # HEADER (Top Bar)
   # =========================
-  app-header-background-color: 'rgba(30, 30, 30, 0.01)'
+  app-header-backdrop-filter: 'blur(12px) saturate(1.2)'
+  app-header-background-color: 'rgba(30, 30, 30, 0.42)'
   app-header-text-color: 'rgba(240, 243, 255, 0.95)'
   app-header-edit-background-color: 'rgba(30, 33, 54, 0.8)'
   app-header-edit-text-color: 'rgba(234, 235, 238, 0.98)'
@@ -163,6 +164,7 @@ Frosted Glass Dark:
       --ha-card-border-width: 0.5px;
       --ha-card-border-color: rgba(234, 235, 238, 0.1);
       --ha-card-backdrop-filter: blur(10px) saturate(1.2);
+    --app-header-backdrop-filter: blur(12px) saturate(1.2);
 
       /* Glass system tokens (dark-tuned) */
       --ha-card-glass-tint: rgba(28, 29, 33, 0.18);
@@ -336,18 +338,32 @@ Frosted Glass Dark:
       --text-divider-color: rgba(234, 235, 238, 1) !important;
     }
 
-    /* HEADER frosted glass via ::before (avoids containing block issue with dropdowns) */
-    .header::before {
+    /* HEADER frosted glass — native HA var plus isolated ::before fallback */
+    .header,
+    .toolbar,
+    ha-top-app-bar-fixed {
+      isolation: isolate;
+      -webkit-backdrop-filter: blur(12px) saturate(1.2) !important;
+      backdrop-filter: blur(12px) saturate(1.2) !important;
+      background: rgba(30, 30, 30, 0.42) !important;
+    }
+    .toolbar {
+      position: relative;
+    }
+    .header::before,
+    .toolbar::before,
+    ha-top-app-bar-fixed::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(30, 30, 30, 0.15);
-      backdrop-filter: blur(8px) saturate(1.1);
-      -webkit-backdrop-filter: blur(8px) saturate(1.1);
+      background: rgba(28, 29, 33, 0.18);
+      backdrop-filter: blur(12px) saturate(1.2);
+      -webkit-backdrop-filter: blur(12px) saturate(1.2);
       z-index: -1;
       pointer-events: none;
     }
-    .edit-mode .header::before {
+    .edit-mode .header::before,
+    .edit-mode .toolbar::before {
       background: rgba(30, 33, 54, 0.8);
     }
 

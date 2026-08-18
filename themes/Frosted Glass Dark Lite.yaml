@@ -1,5 +1,5 @@
 # Frosted Glass Dark Lite
-# ver. 1.4.1 - (2026-08-18)
+# ver. 1.4.2 - (2026-08-18)
 
 Frosted Glass Dark Lite:
   card-mod-theme: 'Frosted Glass Dark Lite'
@@ -10,7 +10,8 @@ Frosted Glass Dark Lite:
   # =========================
   # HEADER (Top Bar)
   # =========================
-  app-header-background-color: 'rgba(30, 30, 30, 0.01)'
+  app-header-backdrop-filter: 'blur(12px) saturate(1.2)'
+  app-header-background-color: 'rgba(30, 30, 30, 0.42)'
   app-header-text-color: 'rgba(240, 243, 255, 0.95)'
   app-header-edit-background-color: 'rgba(30, 33, 54, 0.8)'
   app-header-edit-text-color: 'rgba(234, 235, 238, 0.98)'
@@ -300,6 +301,35 @@ Frosted Glass Dark Lite:
       border-radius: var(--token-size-radius-small);
       border: none !important;
       box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.09) !important;
+    }
+
+    /* HEADER frosted glass — native HA var plus isolated ::before fallback */
+    .header,
+    .toolbar,
+    ha-top-app-bar-fixed {
+      isolation: isolate;
+      -webkit-backdrop-filter: blur(12px) saturate(1.2) !important;
+      backdrop-filter: blur(12px) saturate(1.2) !important;
+      background: rgba(30, 30, 30, 0.42) !important;
+    }
+    .toolbar {
+      position: relative;
+    }
+    .header::before,
+    .toolbar::before,
+    ha-top-app-bar-fixed::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(28, 29, 33, 0.18);
+      backdrop-filter: blur(12px) saturate(1.2);
+      -webkit-backdrop-filter: blur(12px) saturate(1.2);
+      z-index: -1;
+      pointer-events: none;
+    }
+    .edit-mode .header::before,
+    .edit-mode .toolbar::before {
+      background: rgba(30, 33, 54, 0.8);
     }
 
     /* Custom text divider row size fix */

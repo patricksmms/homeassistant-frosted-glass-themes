@@ -1,5 +1,5 @@
 # Frosted Glass Light
-# ver. 1.4.1 - (2026-08-18)
+# ver. 1.4.2 - (2026-08-18)
 
 Frosted Glass Light:
   card-mod-theme: "Frosted Glass Light"
@@ -10,7 +10,8 @@ Frosted Glass Light:
   # =========================
   # HEADER (Top Bar)
   # =========================
-  app-header-background-color: 'rgba(234, 235, 238, 0.01)'
+  app-header-backdrop-filter: 'blur(12px) saturate(1.2)'
+  app-header-background-color: 'rgba(255, 255, 255, 0.42)'
   app-header-text-color: 'rgba(19, 21, 54, 0.95)'
   app-header-edit-background-color: 'rgba(255, 255, 255, 0.8)'
   app-header-edit-text-color: 'rgba(19, 21, 54, 0.98)'
@@ -166,6 +167,7 @@ Frosted Glass Light:
     --ha-card-border-width: 0.5px;
     --ha-card-border-color: rgba(255, 255, 255, 0.3);
     --ha-card-backdrop-filter: blur(8px) saturate(1.2);
+    --app-header-backdrop-filter: blur(12px) saturate(1.2);
 
     /* Glass system tokens */
     --ha-card-glass-tint: rgba(255, 255, 255, 0.08);
