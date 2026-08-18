@@ -1,9 +1,10 @@
-# Frosted Glass Theme for Home Assistant ✨ 
-[![HACS Badge](https://img.shields.io/badge/Available%20in-HACS-41BDF5?logo=home-assistant&logoColor=white)](https://my.home-assistant.io/redirect/hacs_repository/?owner=WessamLauf&repository=homeassistant-frosted-glass-themes&category=theme)
-[![Latest Release](https://img.shields.io/github/v/release/wessamlauf/homeassistant-frosted-glass-themes?label=Release&logo=github)](https://github.com/wessamlauf/homeassistant-frosted-glass-themes/releases)
-[![Last Commit](https://img.shields.io/github/last-commit/wessamlauf/homeassistant-frosted-glass-themes?label=Last%20commit)](https://github.com/wessamlauf/homeassistant-frosted-glass-themes/commits/main)
-[![GitHub Stars](https://img.shields.io/github/stars/wessamlauf/homeassistant-frosted-glass-themes?style=social)](https://github.com/wessamlauf/homeassistant-frosted-glass-themes/stargazers)
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-☕-orange?logo=buymeacoffee&logoColor=white)](https://www.buymeacoffee.com/wessamlauf)
+# Frosted Glass Theme for Home Assistant ✨
+
+Fork of [wessamlauf/homeassistant-frosted-glass-themes](https://github.com/wessamlauf/homeassistant-frosted-glass-themes) with [PR #126](https://github.com/wessamlauf/homeassistant-frosted-glass-themes/pull/126) (header blur without breaking dropdowns) plus frosted-glass more-info dialogs and bottom sheets on Home Assistant 2026.8+.
+
+[![HACS Badge](https://img.shields.io/badge/Available%20in-HACS-41BDF5?logo=home-assistant&logoColor=white)](https://my.home-assistant.io/redirect/hacs_repository/?owner=patricksmms&repository=homeassistant-frosted-glass-themes&category=theme)
+[![Latest Release](https://img.shields.io/github/v/release/patricksmms/homeassistant-frosted-glass-themes?label=Release&logo=github)](https://github.com/patricksmms/homeassistant-frosted-glass-themes/releases)
+[![Last Commit](https://img.shields.io/github/last-commit/patricksmms/homeassistant-frosted-glass-themes?label=Last%20commit)](https://github.com/patricksmms/homeassistant-frosted-glass-themes/commits/main)
 
 
 <img alt="Frosted Glass logo" src="https://github.com/user-attachments/assets/f1fd71d5-f5bb-451e-862c-cc668d987f66" />
@@ -32,7 +33,9 @@ This theme brings a sophisticated "**Frosted Glass**" aesthetic to your dashboar
 
 **Step 2: Install Theme via HACS**
 
-[![Open your Home Assistant instance and install via HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=WessamLauf&repository=homeassistant-frosted-glass-themes&category=theme)
+Add this repository in HACS as a **custom repository** (category: Theme): `https://github.com/patricksmms/homeassistant-frosted-glass-themes`
+
+[![Open your Home Assistant instance and install via HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=patricksmms&repository=homeassistant-frosted-glass-themes&category=theme)
 
 **Step 3: Restart Home Assistant**
 
