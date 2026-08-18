@@ -1,5 +1,5 @@
 # Frosted Glass Light Lite
-# ver. 1.4.15 - (2026-08-18)
+# ver. 1.4.16 - (2026-08-18)
 
 Frosted Glass Lite:
   modes:
@@ -138,22 +138,35 @@ Frosted Glass Lite:
           }
           
           /* better-moment-card: keep clock on wallpaper, no glass frame */
-          :host(better-moment-card) ha-card,
-          :host(.type-custom-better-moment-card) ha-card,
-          ha-card.type-custom-better-moment-card {
+          /* card-mod often attaches on ha-card, so :host IS the clock card */
+          :host(better-moment-card),
+          :host(.type-custom-better-moment-card) {
+            --ha-card-glass-tint: transparent;
+            --ha-card-backdrop-filter: none;
+            --ha-card-glass-inset-shadow: none;
+            --ha-card-box-shadow: none;
+            --ha-card-border-width: 0;
+            --ha-card-border-color: transparent;
             background: transparent !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
+            box-shadow: none !important;
+            border: none !important;
+          }
+          :host(better-moment-card)::before,
+          :host(.type-custom-better-moment-card)::before {
+            content: none !important;
+            display: none !important;
+            box-shadow: none !important;
+          }
+          :host(better-moment-card) ha-card,
+          :host(.type-custom-better-moment-card) ha-card {
+            background: transparent !important;
             box-shadow: none !important;
             border: none !important;
           }
           :host(better-moment-card) ha-card::before,
-          :host(.type-custom-better-moment-card) ha-card::before,
-          :host(.type-custom-better-moment-card)::before,
-          ha-card.type-custom-better-moment-card::before {
+          :host(.type-custom-better-moment-card) ha-card::before {
             content: none !important;
             display: none !important;
-            background: none !important;
             box-shadow: none !important;
           }
           
@@ -743,22 +756,35 @@ Frosted Glass Lite:
           }
           
           /* better-moment-card: keep clock on wallpaper, no glass frame */
-          :host(better-moment-card) ha-card,
-          :host(.type-custom-better-moment-card) ha-card,
-          ha-card.type-custom-better-moment-card {
+          /* card-mod often attaches on ha-card, so :host IS the clock card */
+          :host(better-moment-card),
+          :host(.type-custom-better-moment-card) {
+            --ha-card-glass-tint: transparent;
+            --ha-card-backdrop-filter: none;
+            --ha-card-glass-inset-shadow: none;
+            --ha-card-box-shadow: none;
+            --ha-card-border-width: 0;
+            --ha-card-border-color: transparent;
             background: transparent !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
+            box-shadow: none !important;
+            border: none !important;
+          }
+          :host(better-moment-card)::before,
+          :host(.type-custom-better-moment-card)::before {
+            content: none !important;
+            display: none !important;
+            box-shadow: none !important;
+          }
+          :host(better-moment-card) ha-card,
+          :host(.type-custom-better-moment-card) ha-card {
+            background: transparent !important;
             box-shadow: none !important;
             border: none !important;
           }
           :host(better-moment-card) ha-card::before,
-          :host(.type-custom-better-moment-card) ha-card::before,
-          :host(.type-custom-better-moment-card)::before,
-          ha-card.type-custom-better-moment-card::before {
+          :host(.type-custom-better-moment-card) ha-card::before {
             content: none !important;
             display: none !important;
-            background: none !important;
             box-shadow: none !important;
           }
           
