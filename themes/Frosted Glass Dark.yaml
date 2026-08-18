@@ -1,5 +1,5 @@
 # Frosted Glass Dark
-# ver. 1.4.4 - (2026-08-18)
+# ver. 1.4.5 - (2026-08-18)
 
 Frosted Glass Dark:
   card-mod-theme: 'Frosted Glass Dark'
@@ -154,6 +154,20 @@ Frosted Glass Dark:
     }
     :host(.type-custom-streamline-card) ha-card::before {
       content: none !important;
+    }
+
+    /* Focused tiles: glass wash instead of opaque card fill */
+    ha-card:has(ha-tile-container[focused]),
+    :host(hui-tile-card) ha-card:focus-within {
+      background: rgba(255, 255, 255, 0.08) !important;
+    }
+
+    /* Stock entities cards: tighter horizontal padding */
+    :host(hui-entities-card) .card-content {
+      padding-inline: 12px !important;
+    }
+    :host(hui-entities-card) .card-header {
+      padding-inline: 12px !important;
     }
 
   # =========================
@@ -384,6 +398,21 @@ Frosted Glass Dark:
       }
 
   # =========================
+  # CARD-MOD-ROW (focus wash + icon gutters)
+  # =========================
+  card-mod-row: |
+    .row:focus-visible {
+      background-color: rgba(255, 255, 255, 0.08) !important;
+      border-radius: 12px;
+    }
+    .info {
+      padding-inline-start: 10px !important;
+    }
+    state-badge {
+      flex: 0 0 36px !important;
+    }
+
+  # =========================
   # TYPOGRAPHY
   # =========================
   ha-font-family-body: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
@@ -520,6 +549,21 @@ Frosted Glass Dark:
   mdc-checkbox-unchecked-color: 'rgba(234, 235, 238, 0.75)'
   mdc-radio-unchecked-color: 'rgba(234, 235, 238, 0.75)'
   mdc-ripple-hover-opacity: '0.1'
+
+  # Row / list hover & focus (glass wash, not opaque chrome)
+  hover-color: 'rgba(255, 255, 255, 0.08)'
+  ha-color-fill-neutral-normal-hover: 'rgba(255, 255, 255, 0.08)'
+  ha-color-fill-neutral-quiet-hover: 'rgba(255, 255, 255, 0.08)'
+  ha-color-fill-primary-quiet-hover: 'rgba(106, 116, 211, 0.16)'
+  ha-color-fill-primary-quiet-resting: 'rgba(106, 116, 211, 0.12)'
+  wa-color-neutral-fill-normal: 'rgba(255, 255, 255, 0.08)'
+  paper-item-selected_-_background-color: 'rgba(255, 255, 255, 0.08)'
+  md-list-item-hover-state-layer-color: 'rgba(255, 255, 255, 1)'
+  md-list-item-hover-state-layer-opacity: '0.08'
+  md-list-item-focus-state-layer-color: 'rgba(255, 255, 255, 1)'
+  md-list-item-focus-state-layer-opacity: '0.10'
+  md-list-item-pressed-state-layer-color: 'rgba(255, 255, 255, 1)'
+  md-list-item-pressed-state-layer-opacity: '0.12'
 
   # Inputs
   input-background-color: 'rgba(50, 50, 50, 0.1)'
