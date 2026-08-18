@@ -1,5 +1,5 @@
 # Frosted Glass Light
-# ver. 1.4.16 - (2026-08-18)
+# ver. 1.4.17 - (2026-08-18)
 
 Frosted Glass Light:
   card-mod-theme: "Frosted Glass Light"
@@ -160,10 +160,8 @@ Frosted Glass Light:
         content: none !important;
       }
       
-      /* better-moment-card: keep clock on wallpaper, no glass frame */
-      /* card-mod often attaches on ha-card, so :host IS the clock card */
-      :host(better-moment-card),
-      :host(.type-custom-better-moment-card) {
+      /* better-moment-card has no shadow; :host never matches. ha-card is a light-DOM child. */
+      better-moment-card ha-card {
         --ha-card-glass-tint: transparent;
         --ha-card-backdrop-filter: none;
         --ha-card-glass-inset-shadow: none;
@@ -174,20 +172,7 @@ Frosted Glass Light:
         box-shadow: none !important;
         border: none !important;
       }
-      :host(better-moment-card)::before,
-      :host(.type-custom-better-moment-card)::before {
-        content: none !important;
-        display: none !important;
-        box-shadow: none !important;
-      }
-      :host(better-moment-card) ha-card,
-      :host(.type-custom-better-moment-card) ha-card {
-        background: transparent !important;
-        box-shadow: none !important;
-        border: none !important;
-      }
-      :host(better-moment-card) ha-card::before,
-      :host(.type-custom-better-moment-card) ha-card::before {
+      better-moment-card ha-card::before {
         content: none !important;
         display: none !important;
         box-shadow: none !important;
