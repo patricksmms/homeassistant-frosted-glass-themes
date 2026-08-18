@@ -1,5 +1,5 @@
 # Frosted Glass
-# ver. 1.4.2 - (2026-08-18)
+# ver. 1.4.3 - (2026-08-18)
 
 Frosted Glass:
   modes:
@@ -10,7 +10,7 @@ Frosted Glass:
       # HEADER (Top Bar)
       # =========================
       app-header-backdrop-filter: 'blur(12px) saturate(1.2)'
-      app-header-background-color: 'rgba(255, 255, 255, 0.42)'
+      app-header-background-color: 'rgba(255, 255, 255, 0.08)'
       app-header-text-color: 'rgba(19, 21, 54, 0.95)'
       app-header-edit-background-color: 'rgba(255, 255, 255, 0.8)'
       app-header-edit-text-color: 'rgba(19, 21, 54, 0.98)'
@@ -161,6 +161,8 @@ Frosted Glass:
       # =========================
       card-mod-root: |
        :host {
+        background: var(--lovelace-background) !important;
+        --app-header-background-color: transparent;
         --ha-card-background: rgba(242, 245, 255, 0.1);
         --ha-card-box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
         --ha-card-border-width: 0.5px;
@@ -551,7 +553,7 @@ Frosted Glass:
       # HEADER (Top Bar)
       # =========================
       app-header-backdrop-filter: 'blur(12px) saturate(1.2)'
-      app-header-background-color: 'rgba(30, 30, 30, 0.42)'
+      app-header-background-color: 'rgba(28, 29, 33, 0.18)'
       app-header-text-color: 'rgba(240, 243, 255, 0.95)'
       app-header-edit-background-color: 'rgba(30, 33, 54, 0.8)'
       app-header-edit-text-color: 'rgba(234, 235, 238, 0.98)'
@@ -699,6 +701,8 @@ Frosted Glass:
       # =========================
       card-mod-root: |
         :host {
+          background: var(--lovelace-background) !important;
+          --app-header-background-color: transparent;
           --ha-card-background: rgba(30, 30, 30, 0.1);
           --ha-card-box-shadow: 0 12px 20px rgba(0, 0, 0, 0.28);
           --ha-card-border-width: 0.5px;
@@ -878,14 +882,15 @@ Frosted Glass:
           --text-divider-color: rgba(234, 235, 238, 1) !important;
         }
 
-        /* HEADER frosted glass — native HA var plus isolated ::before fallback */
+        /* HEADER: same glass as cards — wallpaper shows through, then blur */
         .header,
         .toolbar,
         ha-top-app-bar-fixed {
           isolation: isolate;
+          background: transparent !important;
+          background-color: transparent !important;
           -webkit-backdrop-filter: blur(12px) saturate(1.2) !important;
           backdrop-filter: blur(12px) saturate(1.2) !important;
-          background: rgba(30, 30, 30, 0.42) !important;
         }
         .toolbar {
           position: relative;
