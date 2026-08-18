@@ -1,5 +1,5 @@
 # Frosted Glass Dark
-# ver. 1.4.9 - (2026-08-18)
+# ver. 1.4.10 - (2026-08-18)
 
 Frosted Glass Dark:
   card-mod-theme: 'Frosted Glass Dark'
@@ -190,6 +190,27 @@ Frosted Glass Dark:
       .name {
         margin-inline-start: 0 !important;
         margin-left: 0 !important;
+      }
+    "hui-toggle-entity-row $ hui-generic-entity-row $": |
+      .info {
+        padding-inline-start: 10px !important;
+      }
+      state-badge {
+        flex: 0 0 36px !important;
+      }
+    "hui-cover-entity-row $ hui-generic-entity-row $": |
+      .info {
+        padding-inline-start: 10px !important;
+      }
+      state-badge {
+        flex: 0 0 36px !important;
+      }
+    "hui-group-entity-row $ hui-generic-entity-row $": |
+      .info {
+        padding-inline-start: 10px !important;
+      }
+      state-badge {
+        flex: 0 0 36px !important;
       }
 
   # =========================
@@ -422,17 +443,25 @@ Frosted Glass Dark:
   # =========================
   # CARD-MOD-ROW (focus wash + icon gutters)
   # =========================
-  card-mod-row: |
-    .row:focus-visible {
-      background-color: rgba(255, 255, 255, 0.08) !important;
-      border-radius: 12px;
-    }
-    .info {
-      padding-inline-start: 10px !important;
-    }
-    state-badge {
-      flex: 0 0 36px !important;
-    }
+  card-mod-row-yaml: |
+    ".": |
+      .row:focus-visible {
+        background-color: rgba(255, 255, 255, 0.08) !important;
+        border-radius: 12px;
+      }
+      .info {
+        padding-inline-start: 10px !important;
+      }
+      state-badge {
+        flex: 0 0 36px !important;
+      }
+    "hui-generic-entity-row $": |
+      .info {
+        padding-inline-start: 10px !important;
+      }
+      state-badge {
+        flex: 0 0 36px !important;
+      }
 
 
   # =========================
