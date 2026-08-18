@@ -1,14 +1,11 @@
-/* Frosted Glass: match room-card icon gutters on entity rows.
- * card-mod cannot reliably pierce auto-entities → generic-entity-row shadows.
- * Also styles template-entity-row so transit cards keep 10px/36px if theme row CSS drops.
+/* Frosted Glass: entity-row gutters + clock frameless rules.
+ * card-mod cannot reliably pierce auto-entities / battery-state shadows,
+ * and it overwrites better-moment-card's own card_mod.
  */
 (() => {
-  const TAGS = new Set([
-    "hui-generic-entity-row",
-    "template-entity-row",
-  ]);
   const FLAG = "_frostedGlassGutters";
-  const CSS = `
+
+  const ROW_CSS = `
     .info {
       padding-left: 10px !important;
       padding-inline-start: 10px !important;
@@ -18,30 +15,106 @@
     }
   `;
 
-  let sheet;
+  const BATTERY_ENTITY_CSS = `
+    .icon {
+      flex: 0 0 36px !important;
+      margin-right: 10px !important;
+      margin-inline-end: 10px !important;
+      line-height: 36px !important;
+    }
+    .name {
+      margin-left: 0 !important;
+      margin-inline-start: 0 !important;
+    }
+  `;
+
+  const BATTERY_CARD_CSS = `
+    .card-content {
+      padding-inline-start: 12px !important;
+      padding-inline-end: 12px !important;
+    }
+  `;
+
+  const CLOCK_CSS = `
+    ha-card {
+      background: transparent !important;
+      box-shadow: none !important;
+      border: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      --ha-card-box-shadow: none !important;
+      --ha-card-border-width: 0 !important;
+      --ha-card-border-color: transparent !important;
+      --ha-card-glass-inset-shadow: none !important;
+    }
+    ha-card::before {
+      content: none !important;
+      display: none !important;
+      box-shadow: none !important;
+    }
+  `;
+
+  const SHADOW_CSS = {
+    "hui-generic-entity-row": ROW_CSS,
+    "template-entity-row": ROW_CSS,
+    "battery-state-entity": BATTERY_ENTITY_CSS,
+    "battery-state-card": BATTERY_CARD_CSS,
+  };
+
+  const sheets = {};
   try {
-    sheet = new CSSStyleSheet();
-    sheet.replaceSync(CSS);
+    for (const [tag, css] of Object.entries(SHADOW_CSS)) {
+      const sheet = new CSSStyleSheet();
+      sheet.replaceSync(css);
+      sheets[tag] = sheet;
+    }
   } catch (_e) {
-    sheet = null;
+    /* use <style> tags */
   }
 
-  const apply = (el) => {
+  const applyShadow = (el) => {
+    const css = SHADOW_CSS[el.localName];
     const root = el?.shadowRoot;
-    if (!root || root[FLAG]) return;
+    if (!css || !root || root[FLAG]) return;
+    const sheet = sheets[el.localName];
     if (sheet) {
       try {
         root.adoptedStyleSheets = [...(root.adoptedStyleSheets || []), sheet];
         root[FLAG] = true;
         return;
       } catch (_e) {
-        /* fall through to a <style> tag */
+        /* fall through */
       }
     }
     const style = document.createElement("style");
-    style.textContent = CSS;
+    style.textContent = css;
     root.appendChild(style);
     root[FLAG] = true;
+  };
+
+  const applyClock = (el) => {
+    if (!el || el[FLAG]) return;
+    el[FLAG] = true;
+    const style = document.createElement("style");
+    style.textContent = CLOCK_CSS;
+    el.appendChild(style);
+    const card = el.querySelector("ha-card");
+    if (!card) return;
+    card.style.setProperty("background", "transparent", "important");
+    card.style.setProperty("box-shadow", "none", "important");
+    card.style.setProperty("border", "none", "important");
+    card.style.setProperty("margin", "0", "important");
+    card.style.setProperty("padding", "0", "important");
+    card.style.setProperty("--ha-card-box-shadow", "none");
+    card.style.setProperty("--ha-card-border-width", "0");
+    card.style.setProperty("--ha-card-border-color", "transparent");
+    card.style.setProperty("--ha-card-glass-inset-shadow", "none");
+  };
+
+  const apply = (el) => {
+    if (!el || el.nodeType !== 1) return;
+    if (el.localName === "better-moment-card") applyClock(el);
+    else applyShadow(el);
   };
 
   const observe = (root) => {
@@ -57,7 +130,7 @@
   const walk = (node) => {
     if (!node) return;
     if (node.nodeType === 1) {
-      if (TAGS.has(node.localName)) apply(node);
+      apply(node);
       if (node.shadowRoot) {
         observe(node.shadowRoot);
         walk(node.shadowRoot);
@@ -85,6 +158,8 @@
       else Promise.resolve().then(go);
     };
   };
+
+  const TAGS = [...Object.keys(SHADOW_CSS), "better-moment-card"];
 
   const hook = () => {
     for (const tag of TAGS) hookTag(tag);
