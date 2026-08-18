@@ -1,5 +1,5 @@
 # Frosted Glass Dark Lite
-# ver. 1.4.13 - (2026-08-18)
+# ver. 1.4.14 - (2026-08-18)
 
 Frosted Glass Dark Lite:
   card-mod-theme: 'Frosted Glass Dark Lite'
@@ -134,6 +134,23 @@ Frosted Glass Dark Lite:
       }
       :host(.type-custom-streamline-card) ha-card::before {
         content: none !important;
+      }
+      
+      /* better-moment-card: keep clock on wallpaper, no glass frame */
+      :host(better-moment-card) ha-card,
+      :host(.type-custom-better-moment-card) ha-card {
+        background: transparent !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
+      :host(better-moment-card) ha-card::before,
+      :host(.type-custom-better-moment-card) ha-card::before {
+        content: none !important;
+        display: none !important;
+        background: none !important;
+        box-shadow: none !important;
       }
       
       /* Focused tiles: glass wash instead of opaque card fill */
