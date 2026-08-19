@@ -17,7 +17,7 @@
 
   const BATTERY_ENTITY_CSS = `
     :host {
-      padding-inline-end: 12px !important;
+      padding-inline-end: 16px !important;
       box-sizing: border-box;
     }
     .icon {
@@ -40,9 +40,9 @@
 
   const BATTERY_CARD_CSS = `
     .card-content {
-      padding-inline-start: 12px !important;
+      padding-inline-start: 16px !important;
       padding-inline-end: 0 !important;
-      padding-left: 12px !important;
+      padding-left: 16px !important;
       padding-right: 0 !important;
     }
   `;
@@ -50,20 +50,20 @@
   const ENTITIES_CARD_CSS = `
     .card-content,
     #states {
-      padding-inline-start: 12px !important;
-      padding-inline-end: 12px !important;
-      padding-left: 12px !important;
-      padding-right: 12px !important;
+      padding-inline-start: 16px !important;
+      padding-inline-end: 16px !important;
+      padding-left: 16px !important;
+      padding-right: 16px !important;
     }
   `;
 
   const HA_CARD_SLOT_CSS = `
     ::slotted(.card-content),
     ::slotted(#states) {
-      padding-inline-start: 12px !important;
-      padding-inline-end: 12px !important;
-      padding-left: 12px !important;
-      padding-right: 12px !important;
+      padding-inline-start: 16px !important;
+      padding-inline-end: 16px !important;
+      padding-left: 16px !important;
+      padding-right: 16px !important;
     }
   `;
 
@@ -146,17 +146,17 @@
     if (el.localName === "battery-state-card") {
       const card = root.querySelector("ha-card");
       pierceHaCard(card);
-      padBox(root.querySelector(".card-content"), 12, 0);
+      padBox(root.querySelector(".card-content"), 16, 0);
       padBox(el, 0, 0);
     }
     if (el.localName === "hui-entities-card") {
       const card = root.querySelector("ha-card");
       pierceHaCard(card);
-      padBox(root.querySelector("#states"), 12, 12);
-      padBox(root.querySelector(".card-content"), 12, 12);
+      padBox(root.querySelector("#states"), 16, 16);
+      padBox(root.querySelector(".card-content"), 16, 16);
     }
     if (el.localName === "battery-state-entity") {
-      padBox(el, 0, 12);
+      padBox(el, 0, 16);
     }
   };
 

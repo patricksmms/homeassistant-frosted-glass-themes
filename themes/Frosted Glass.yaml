@@ -1,5 +1,5 @@
 # Frosted Glass
-# ver. 1.4.18 - (2026-08-18)
+# ver. 1.4.21 - (2026-08-19)
 
 Frosted Glass:
   modes:
@@ -183,24 +183,24 @@ Frosted Glass:
             background: rgba(0, 0, 0, 0.06) !important;
           }
           
-          /* Stock entities cards: 12px left of icons; same 12px on the right text column */
+          /* Stock entities cards: 16px left of icons; same 16px on the right text column */
           :host(hui-entities-card) .card-content,
           :host(hui-entities-card) #states,
           :host(.type-entities) .card-content,
           :host(.type-entities) #states {
-            padding-inline-start: 12px !important;
-            padding-inline-end: 12px !important;
+            padding-inline-start: 16px !important;
+            padding-inline-end: 16px !important;
           }
           :host(hui-entities-card) .card-header,
           :host(.type-entities) .card-header {
-            padding-inline-start: 12px !important;
-            padding-inline-end: 12px !important;
+            padding-inline-start: 16px !important;
+            padding-inline-end: 16px !important;
           }
           
-          /* battery-state-card: 12px right of the value column, same as entities cards */
+          /* battery-state-card: 16px right of the value column, same as entities cards */
           :host(battery-state-card) .card-content,
           :host(.type-custom-battery-state-card) .card-content {
-            padding-inline-end: 12px !important;
+            padding-inline-end: 16px !important;
           }
         "battery-state-entity $": |
           .icon {
@@ -811,24 +811,24 @@ Frosted Glass:
             background: rgba(255, 255, 255, 0.08) !important;
           }
           
-          /* Stock entities cards: 12px left of icons; same 12px on the right text column */
+          /* Stock entities cards: 16px left of icons; same 16px on the right text column */
           :host(hui-entities-card) .card-content,
           :host(hui-entities-card) #states,
           :host(.type-entities) .card-content,
           :host(.type-entities) #states {
-            padding-inline-start: 12px !important;
-            padding-inline-end: 12px !important;
+            padding-inline-start: 16px !important;
+            padding-inline-end: 16px !important;
           }
           :host(hui-entities-card) .card-header,
           :host(.type-entities) .card-header {
-            padding-inline-start: 12px !important;
-            padding-inline-end: 12px !important;
+            padding-inline-start: 16px !important;
+            padding-inline-end: 16px !important;
           }
           
-          /* battery-state-card: 12px right of the value column, same as entities cards */
+          /* battery-state-card: 16px right of the value column, same as entities cards */
           :host(battery-state-card) .card-content,
           :host(.type-custom-battery-state-card) .card-content {
-            padding-inline-end: 12px !important;
+            padding-inline-end: 16px !important;
           }
         "battery-state-entity $": |
           .icon {
